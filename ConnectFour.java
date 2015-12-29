@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class ConnectFour {
 	
 	public static String[][] makeBoard()
 	{
@@ -19,9 +19,6 @@ public class Main {
 		return a;
 	}
 	
-	
-	
-	
 	public static void showBoard(String[][] a)
 	{
 		for (int i=0; i<a.length; i++)
@@ -33,9 +30,6 @@ public class Main {
 			System.out.println();
 		}
 	}
-	
-	
-	
 	
 	public static void redDrop(String[][] a)
 	{
