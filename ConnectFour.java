@@ -4,7 +4,7 @@
  */
 
 
-import java.util.Scanner;
+import java.util.Scanner; 							//"a simple text scanner which can parse primitive types and strings"
 
 public class ConnectFour {
 	
@@ -78,71 +78,69 @@ public class ConnectFour {
 	//function to declare a winner. Winner may be determined by 4 markers of the same type in a row. The 4 consecutive markers can be horizontal, vertical, or diagonal. 
 	public static String result(String[][] a)
 	{
-		// horizontal win
-		for (int i = 0; i<6; i++)				//loop cycles through the rows (6 rows total, rows: 0 to 5)
+		//loop to handle a horizontal win
+		for (int i = 0; i < 6; i++)				//loop cycles through the rows (6 rows total, rows: 0 to 5)
 		{
-			for (int j = 0; j<7; j+=2)			//loop cycles through the columns (7 columns total, columns: 0 to 6)
+			for (int j = 0; j < 7; j+=2)		//loop cycles through the columns (7 columns total, columns: 0 to 6)
 			{
-				if ((a[i][j+1] != " ")			//if the spot is NOT blank, in addition to the following conditions..
-						&& (a[i][j+3] != " ")	
-						&& (a[i][j+5] != " ")
-						&& (a[i][j+7] != " ")
-						&& ((a[i][j+1] == a[i][j+3])
-								&& (a[i][j+3] == a[i][j+5])
-								&& (a[i][j+5] == a[i][j+7])))
+				if ((a[i][j+1] != " ")			//if these particular spots are NOT blank, in addition to the following conditions..
+						&& (a[i][j+3] != " ")	//
+						&& (a[i][j+5] != " ")	//
+						&& (a[i][j+7] != " ")	//
+						&& ((a[i][j+1] == a[i][j+3])			//if the spots are equal to each other (all R's or all Y's)
+								&& (a[i][j+3] == a[i][j+5])		//
+								&& (a[i][j+5] == a[i][j+7])))	//
 					return a[i][j+1];
 			}
 		}
 		
-		// vertical win
-		for (int i = 1; i<15; i +=2)
+		//loop to handle a vertical win
+		for (int i = 1; i < 15; i +=2)		//cycles around the horizontal or vertical borders
 		{
-			for (int j = 0; j<3; j++)
+			for (int j = 0; j < 3; j++)
 			{
-				if((a[j][i] != " ")
-						&& (a[j+1][i] != " ")
-						&& (a[j+2][i] != " ")
-						&& (a[j+3][i] != " ")
-						&& ((a[j][i] == a[j+1][i])
-								&& (a[j+1][i] == a[j+2][i])
-								&& (a[j+2][i] == a[j+3][i])))
+				if((a[j][i] != " ")				//if these particular spots are NOT blank, in addition to the following conditions..
+						&& (a[j+1][i] != " ")	//
+						&& (a[j+2][i] != " ")	//
+						&& (a[j+3][i] != " ")	//
+						&& ((a[j][i] == a[j+1][i])				//if the spots are equal to each other (all R's or all Y's)
+								&& (a[j+1][i] == a[j+2][i])		//
+								&& (a[j+2][i] == a[j+3][i])))	//
 					return a[j][i];
 			}
 		}
 		
-		// diagonal wins
-		for (int i = 0; i<3; i++)
+		//loop to handle a diagonal wins
+		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 1; j<9; j+=2)
+			for (int j = 1; j < 9; j+=2)
 			{
-				if ((a[i][j] != " ")
-						&& (a[i+1][j+2] != " ")
-						&& (a[i+2][j+4] != " ")
-						&& (a[i+3][j+6] != " ")
-						&& ((a[i][j] == a[i+1][j+2])
-								&& (a[i+1][j+2] == a[i+2][j+4])
-								&& (a[i+2][j+4] == a[i+3][j+6])))
+				if ((a[i][j] != " ")				//if these particular spots are NOT blank, in addition to the following conditions..
+						&& (a[i+1][j+2] != " ")		//
+						&& (a[i+2][j+4] != " ")		//
+						&& (a[i+3][j+6] != " ")		//
+						&& ((a[i][j] == a[i+1][j+2])				//if the spots are equal to each other (all R's or all Y's)	
+								&& (a[i+1][j+2] == a[i+2][j+4])		//
+								&& (a[i+2][j+4] == a[i+3][j+6])))	//
 					return a[i][j];  
-
 			}
 		}
 		
-		for (int i = 0; i<3; i++)
+		for (int i = 0; i < 3; i++)
 		{
-			for (int j=7; j<15; j+=2)
+			for (int j=7; j < 15; j+=2)
 			{
-				if ((a[i][j] != " ")
-					&& (a[i+1][j-2] != " ")
-					&& (a[i+2][j-4] != " ")
-					&& (a[i+3][j-6] != " ")
-					&& ((a[i][j] == a[i+1][j-2])
-							&& (a[i+1][j-2] == a[i+2][j-4])
-							&& (a[i+2][j-4] == a[i+3][j-6])))
+				if ((a[i][j] != " ")				//if these particular spots are NOT blank, in addition to the following conditions..
+					&& (a[i+1][j-2] != " ")			//
+					&& (a[i+2][j-4] != " ")			//
+					&& (a[i+3][j-6] != " ")			//
+					&& ((a[i][j] == a[i+1][j-2])				//if the spots are equal to each other (all R's or all Y's)	
+							&& (a[i+1][j-2] == a[i+2][j-4])		//
+							&& (a[i+2][j-4] == a[i+3][j-6])))	//
 					return a[i][j];
-
 			}
 		}
-		return null;
+		return null;								//returns null, meaning a player has won
 	}
 	
 	
@@ -156,15 +154,15 @@ public class ConnectFour {
 		showBoard(defaultBoard);							//calls method to print the board
 		while(loop)											//while loop is true (loop switches to false after a winner has been declared)
 		{
-			if ( count% 2 == 0) redDrop(defaultBoard);		//if the count of turns is even, red makes a move
+			if (count% 2 == 0) redDrop(defaultBoard);		//if the count of turns is even, red makes a move
 			else yellowDrop(defaultBoard);					//else, if the count of turns is odd, yellow makes a move
 			count++;										//increments count, the number of turns, by 1 (after red OR yellow has gone)
 			showBoard(defaultBoard);						//prints the board after the move has been made
 			if (result(defaultBoard) != null)				//if there is a winner (allows us to print the winning statement and halt the program)
 			{
-				if (result(defaultBoard) == "R")			//if Red team has won, will print winning statement
+				if (result(defaultBoard) == "R")			//if Red team has won, system will print winning statement
 					System.out.println("Red player wins!");
-				else if (result(defaultBoard) == "Y")		//if Yellow team has won, will print winning statement
+				else if (result(defaultBoard) == "Y")		//if Yellow team has won, system will print winning statement
 					System.out.println("Yellow player wins!");
 				loop = false;								//most importantly, breaks the loop if a winner has been declared.
 			}
